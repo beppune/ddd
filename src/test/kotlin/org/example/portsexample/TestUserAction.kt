@@ -25,7 +25,10 @@ class TestUserAction : AnnotationSpec() {
 
         val userAdd = AddUser {
             var problems = userBook.checkAll(user)
-            var message = "User validation failed: [" + problems.map {it.name  } .reduce { acc, desc -> "$acc, $desc" } + "]"
+            var message =
+                "User validation failed: [" +
+                problems.map {it.name  } .joinToString(", ") +
+                "]"
 
             if(problems.isNotEmpty()) throw Exception(message)
 
