@@ -1,13 +1,10 @@
 package org.example.portsexample.app
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.parameters.arguments.argument
-import com.github.ajalt.clikt.parameters.arguments.multiple
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.options.split
 import org.example.portsexample.inbound.AddUser
-import org.example.portsexample.inbound.GroupAdd
 import org.example.portsexample.model.Role
 import org.example.portsexample.model.User
 import org.example.portsexample.outbound.UserService
