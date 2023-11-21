@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jetbrains:markdown-jvm:0.4.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/markdown-jvm/0.4.1/markdown-jvm-0.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/markdown-jvm/0.4.1/markdown-jvm-0.4.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/markdown-jvm/0.4.1/markdown-jvm-0.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
