@@ -5,6 +5,9 @@ import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
 import io.mockk.*
 import org.example.portsexample.app.UserCommand
+import org.example.portsexample.model.Right
+import org.example.portsexample.model.Role
+import org.example.portsexample.model.User
 import org.example.portsexample.outbound.UserService
 
 class TestUserCommands:AnnotationSpec() {
@@ -12,8 +15,13 @@ class TestUserCommands:AnnotationSpec() {
     @Test
     fun testAddUserCommand() {
 
+        val user = User("beppune").apply {
+            roles.add(Role("rol1"))
+            roles.add(Role("rol2"))
+        }
+
         val service:UserService = mockk()
-        every { service.save(any()) } just runs
+        every { service.save(any()) } returns Right(user)
 
         var cmd = UserCommand(service)
 

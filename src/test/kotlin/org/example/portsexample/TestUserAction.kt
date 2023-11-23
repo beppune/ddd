@@ -5,9 +5,7 @@ import io.kotest.core.spec.style.AnnotationSpec
 import io.mockk.*
 import org.example.portsexample.inbound.AddUser
 import org.example.portsexample.inbound.GroupAdd
-import org.example.portsexample.model.Role
-import org.example.portsexample.model.RoleName
-import org.example.portsexample.model.User
+import org.example.portsexample.model.*
 import org.example.portsexample.model.policy.PolicyManager
 import org.example.portsexample.outbound.UserService
 
@@ -46,10 +44,14 @@ class TestUserAction : AnnotationSpec() {
     @Test
     fun groupAdd() {
 
-        val service:UserService = mockk()
-        every { service.save(any()) } just runs
-
         val user = User("uname")
+
+        val service:UserService = mockk()
+        every { service.save(any()) } returns Right(user.copy().apply {
+            listOf("group1", "group2")
+                .map { Role(it) }
+                .forEach { roles.add(it)  }
+        })
 
         val action = GroupAdd {
             val groups:List<RoleName> = listOf("group1", "group2")

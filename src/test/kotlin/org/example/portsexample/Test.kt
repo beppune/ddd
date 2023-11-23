@@ -7,6 +7,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.mockk.*
 import org.example.portsexample.inbound.AddUser
+import org.example.portsexample.model.Right
 import org.example.portsexample.model.User
 import org.example.portsexample.model.policy.book
 import org.example.portsexample.outbound.UserService
@@ -16,10 +17,10 @@ class Test : AnnotationSpec() {
     @Test
     fun test() {
 
-        val service:UserService = mockk()
-        every { service.save(any()) } just runs
-
         val user = User("USERNAME")
+
+        val service:UserService = mockk()
+        every { service.save(any()) } returns Right(user)
 
         AddUser {
             service.save(user)
